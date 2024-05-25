@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.15.0-105-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "heartbeatAt": "2024-05-25T07:32:18.274608",
+    "startedAt": "2024-05-25T07:32:17.580017",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_count": 2,
+    "cpu_count": 32,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "codePath": "train.py",
+    "program": "train.py",
+    "git": {
+        "remote": "https://github.com/Yujun1025/burning_event.git",
+        "commit": "de1d54fb29654febef1e55651e08bef7ebab7b3c"
+    },
+    "email": "89248050+yongmini@users.noreply.github.com",
+    "root": "/home/workspace/burning_event",
+    "host": "ym_indigo",
+    "username": "root",
+    "executable": "/usr/local/bin/python"
+}

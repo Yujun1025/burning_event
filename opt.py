@@ -12,7 +12,7 @@ def parse_args():
                         help='Source data, separated by "," (select specific conditions of the dataset with name_number, such as HUST_0)')
     parser.add_argument('--target', type=str, default='JNU_1',
                         help='Target data (select specific conditions of the dataset with name_number, such as CWRU_0)')
-    parser.add_argument('--data_dir', type=str, default="/home/workspace/burning_event/dataset",
+    parser.add_argument('--data_dir', type=str, default="../burning_event/dataset",
                         help='Directory of the datasets')
     parser.add_argument('--train_mode', type=str, default='source_combine',
                         choices=['single_source', 'source_combine', 'multi_source'],
