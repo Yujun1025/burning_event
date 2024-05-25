@@ -73,7 +73,7 @@ class Trainset(InitTrain):
                 # forward
                 self.optimizer.zero_grad()
                 f = self.model(source_data)
-                pred = self.C(f)
+                pred,_ = self.C(f)
                 loss = F.cross_entropy(pred, source_labels)
                 epoch_acc['Source Data']  += utils.get_accuracy(pred, source_labels)
                 
@@ -132,7 +132,7 @@ class Trainset(InitTrain):
             for i in tqdm(range(num_iter), ascii=True):
                 target_data, target_labels, _ = next(iters)
                 target_data, target_labels = target_data.to(self.device), target_labels.to(self.device)
-                f = self.model(target_data)
+                f,_ = self.model(target_data)
                 pred = self.C(f)
                 acc += utils.get_accuracy(pred, target_labels)
         acc /= num_iter

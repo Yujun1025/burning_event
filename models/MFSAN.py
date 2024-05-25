@@ -84,7 +84,7 @@ class Trainset(InitTrain):
                 self.optimizer.zero_grad()
                 data = torch.cat((source_data, target_data), dim=0)
                 # Forward pass through the feature extractor
-                f = self.G(data)
+                f,_ = self.G(data)
                 f_s, f_t = f.chunk(2, dim=0)
                 # Forward pass through the classifier
                 y_s = self.Cs[src_idx](f_s)
@@ -159,7 +159,7 @@ class Trainset(InitTrain):
             for i in tqdm(range(num_iter), ascii=True):
                 target_data, target_labels, _ = next(iters)
                 target_data, target_labels = target_data.to(self.device), target_labels.to(self.device)
-                feat_tgt = self.G(target_data)
+                feat_tgt,_ = self.G(target_data)
                 logits_tgt = [cl(feat_tgt) for cl in self.Cs]
                 logits_tgt = [F.softmax(data, dim=1) for data in logits_tgt]
                 

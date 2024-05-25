@@ -1,0 +1,111 @@
+wandb_version: 1
+
+Domain:
+  desc: null
+  value: exp
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.9
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.10
+adv:
+  desc: null
+  value: 1
+batch_size:
+  desc: null
+  value: 32
+betas:
+  desc: null
+  value:
+  - 0.9
+  - 0.999
+cuda_device:
+  desc: null
+  value: '0'
+data_dir:
+  desc: null
+  value: /home/workspace/burning_event/dataset
+dropout:
+  desc: null
+  value: 0.2
+fac:
+  desc: null
+  value: 0
+gamma:
+  desc: null
+  value: 0.2
+iet:
+  desc: null
+  value: 0
+load_path:
+  desc: null
+  value: ''
+lr:
+  desc: null
+  value: 0.001
+lr_scheduler:
+  desc: null
+  value: stepLR
+max_epoch:
+  desc: null
+  value: 50
+model_name:
+  desc: null
+  value: MFSAN
+momentum:
+  desc: null
+  value: 0.9
+normlizetype:
+  desc: null
+  value: mean-std
+num_workers:
+  desc: null
+  value: 0
+opt:
+  desc: null
+  value: adam
+project:
+  desc: null
+  value: SWEEEEP
+random_state:
+  desc: null
+  value: 5
+recon:
+  desc: null
+  value: 0
+save:
+  desc: null
+  value: false
+save_dir:
+  desc: null
+  value: ./ckpt
+signal_size:
+  desc: null
+  value: 2048
+source:
+  desc: null
+  value: JNU_0,JNU_2
+steps:
+  desc: null
+  value: '20'
+target:
+  desc: null
+  value: CWRU_0
+tradeoff:
+  desc: null
+  value:
+  - exp
+  - exp
+  - exp
+train_mode:
+  desc: null
+  value: multi_source
+tsne:
+  desc: null
+  value: false
+weight_decay:
+  desc: null
+  value: 0.001

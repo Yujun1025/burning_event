@@ -1,0 +1,63 @@
+2024-05-25 07:27:12,217 INFO    MainThread:790235 [wandb_setup.py:_flush():68] setting env: {}
+2024-05-25 07:27:12,217 INFO    MainThread:790235 [wandb_setup.py:_flush():68] multiprocessing start_methods=fork,spawn,forkserver
+2024-05-25 07:27:12,217 INFO    MainThread:790235 [wandb_setup.py:_flush():68] setting login settings: {}
+2024-05-25 07:27:12,217 INFO    MainThread:790235 [wandb_init.py:_log_setup():301] Logging user logs to wandb/run-20240525_072712-qey2r4ud/logs/debug.log
+2024-05-25 07:27:12,217 INFO    MainThread:790235 [wandb_init.py:_log_setup():302] Logging internal logs to wandb/run-20240525_072712-qey2r4ud/logs/debug-internal.log
+2024-05-25 07:27:12,915 INFO    MainThread:790235 [wandb_run.py:_console_start():1322] atexit reg
+2024-05-25 07:27:12,916 INFO    MainThread:790235 [wandb_run.py:_redirect():1192] redirect: SettingsConsole.REDIRECT
+2024-05-25 07:27:12,916 INFO    MainThread:790235 [wandb_run.py:_redirect():1195] Redirecting console.
+2024-05-25 07:27:12,916 INFO    MainThread:790235 [redirect.py:install():204] install start
+2024-05-25 07:27:12,917 INFO    MainThread:790235 [redirect.py:install():219] install stop
+2024-05-25 07:27:12,917 INFO    MainThread:790235 [redirect.py:install():204] install start
+2024-05-25 07:27:12,917 INFO    MainThread:790235 [redirect.py:install():219] install stop
+2024-05-25 07:27:12,917 INFO    MainThread:790235 [wandb_run.py:_redirect():1239] Redirects installed.
+2024-05-25 07:27:12,931 INFO    MainThread:790235 [wandb_run.py:_config_callback():654] config_cb None None {'model_name': 'CNN', 'Domain': 'exp', 'source': 'CWRU_0,CWRU_2', 'target': 'JNU_1', 'data_dir': '/home/workspace/burning_event/dataset', 'train_mode': 'source_combine', 'cuda_device': '0', 'save_dir': './ckpt', 'max_epoch': 50, 'batch_size': 32, 'num_workers': 0, 'signal_size': 2048, 'random_state': 5, 'project': 'SWEEEEP', 'fac': 0, 'adv': 1, 'recon': 0, 'iet': 0, 'normlizetype': 'mean-std', 'opt': 'adam', 'lr': 0.001, 'momentum': 0.9, 'betas': [0.9, 0.999], 'weight_decay': 0.001, 'lr_scheduler': 'stepLR', 'gamma': 0.2, 'steps': '20', 'tradeoff': ['exp', 'exp', 'exp'], 'dropout': 0.2, 'save': False, 'load_path': '', 'tsne': False, '_wandb': {'cli_version': '0.10.9', 'python_version': '3.8.10', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}}
+2024-05-25 07:27:18,511 INFO    MainThread:790235 [wandb_run.py:_atexit_cleanup():1295] got exitcode: 1
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [wandb_run.py:_restore():1267] restore
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:uninstall():223] uninstall start
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():278] _stop: stdout
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():284] _stop closed: stdout
+2024-05-25 07:27:18,512 INFO    stdout    :790235 [redirect.py:_pipe_relay():120] relay done saw last write: stdout
+2024-05-25 07:27:18,512 INFO    stdout    :790235 [redirect.py:_pipe_relay():136] relay done done: stdout
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():290] _stop joined: stdout
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():292] _stop rd closed: stdout
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:uninstall():227] uninstall done
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:uninstall():223] uninstall start
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():278] _stop: stderr
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():284] _stop closed: stderr
+2024-05-25 07:27:18,512 INFO    stderr    :790235 [redirect.py:_pipe_relay():120] relay done saw last write: stderr
+2024-05-25 07:27:18,512 INFO    stderr    :790235 [redirect.py:_pipe_relay():136] relay done done: stderr
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():290] _stop joined: stderr
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:_stop():292] _stop rd closed: stderr
+2024-05-25 07:27:18,512 INFO    MainThread:790235 [redirect.py:uninstall():227] uninstall done
+2024-05-25 07:27:18,514 INFO    MainThread:790235 [wandb_run.py:_wait_for_finish():1409] got exit ret: uuid: "30a57b5b7c8d478d9b7a9d60910fac75"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 740
+      total_bytes: 740
+    }
+  }
+}
+
+2024-05-25 07:27:20,517 INFO    MainThread:790235 [wandb_run.py:_wait_for_finish():1409] got exit ret: uuid: "17eb206642e747fc98a73265fc047cc6"
+response {
+  poll_exit_response {
+    done: true
+    exit_result {
+    }
+    file_counts {
+      wandb_count: 5
+    }
+    pusher_stats {
+      uploaded_bytes: 8694
+      total_bytes: 8694
+    }
+  }
+}
+
+2024-05-25 07:27:21,574 INFO    MainThread:790235 [wandb_run.py:_show_files():1618] logging synced files
+2024-05-25 07:27:21,575 INFO    MainThread:790235 [internal.py:handle_exit():138] Internal process exited

@@ -135,7 +135,7 @@ class BaseModel(nn.Module):
         self.C = ClassifierMLP(512, num_classes, dropout, last=None)
         
     def forward(self, input):
-        f = self.G(input)
+        f,_ = self.G(input)
         predictions = self.C(f)
         
         if self.training:

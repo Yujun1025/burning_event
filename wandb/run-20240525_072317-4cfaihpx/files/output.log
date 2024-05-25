@@ -1,0 +1,37 @@
+05-25 07:23:18 model_name: MFSAN
+05-25 07:23:18 Domain: exp
+05-25 07:23:18 source: JNU_0,JNU_2
+05-25 07:23:18 target: CWRU_0
+05-25 07:23:18 data_dir: /home/real_last/datasets
+05-25 07:23:18 train_mode: multi_source
+05-25 07:23:18 cuda_device: 0
+05-25 07:23:18 save_dir: ./ckpt
+05-25 07:23:18 max_epoch: 50
+05-25 07:23:18 batch_size: 32
+05-25 07:23:18 num_workers: 0
+05-25 07:23:18 signal_size: 2048
+05-25 07:23:18 random_state: 5
+05-25 07:23:18 project: SWEEEEP
+05-25 07:23:18 fac: 0
+05-25 07:23:18 adv: 1
+05-25 07:23:18 recon: 0
+05-25 07:23:18 iet: 0
+05-25 07:23:18 normlizetype: mean-std
+05-25 07:23:18 opt: adam
+05-25 07:23:18 lr: 0.001
+05-25 07:23:18 momentum: 0.9
+05-25 07:23:18 betas: (0.9, 0.999)
+05-25 07:23:18 weight_decay: 0.001
+05-25 07:23:18 lr_scheduler: stepLR
+05-25 07:23:18 gamma: 0.2
+05-25 07:23:18 steps: 20
+05-25 07:23:18 tradeoff: ['exp', 'exp', 'exp']
+05-25 07:23:18 dropout: 0.2
+05-25 07:23:18 save: False
+05-25 07:23:18 load_path: 
+05-25 07:23:18 tsne: False
+05-25 07:23:18 save_path: ./ckpt/MFSAN/multi_source/[JNU_0JNU_2]To[CWRU_0]_0525-072318
+Traceback (most recent call last):
+  File "train.py", line 74, in <module>
+    args.faults = sorted(os.listdir(os.path.join(data_root, 'condition_%d' % condition)))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/real_last/datasets/CWRU/condition_0'
