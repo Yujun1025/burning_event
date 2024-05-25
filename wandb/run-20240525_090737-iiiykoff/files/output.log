@@ -1,0 +1,82 @@
+05-25 09:07:37 model_name: new
+05-25 09:07:37 Domain: exp
+05-25 09:07:37 source: JNU_0,JNU_2
+05-25 09:07:37 target: CWRU_0
+05-25 09:07:37 data_dir: ../burning_event/dataset
+05-25 09:07:37 train_mode: multi_source
+05-25 09:07:37 cuda_device: 0
+05-25 09:07:37 save_dir: ./ckpt
+05-25 09:07:37 max_epoch: 50
+05-25 09:07:37 batch_size: 32
+05-25 09:07:37 num_workers: 0
+05-25 09:07:37 signal_size: 2048
+05-25 09:07:37 random_state: 331
+05-25 09:07:37 project: SWEEEEP
+05-25 09:07:37 fac: 0
+05-25 09:07:37 adv: 1
+05-25 09:07:37 recon: 0
+05-25 09:07:37 iet: 0
+05-25 09:07:37 normlizetype: mean-std
+05-25 09:07:37 opt: adam
+05-25 09:07:37 lr: 0.001
+05-25 09:07:37 momentum: 0.9
+05-25 09:07:37 betas: (0.9, 0.999)
+05-25 09:07:37 weight_decay: 0.001
+05-25 09:07:37 lr_scheduler: stepLR
+05-25 09:07:37 gamma: 0.2
+05-25 09:07:37 steps: 20
+05-25 09:07:37 tradeoff: ['exp', 'exp', 'exp']
+05-25 09:07:37 dropout: 0.2
+05-25 09:07:37 save: False
+05-25 09:07:37 load_path:
+05-25 09:07:37 tsne: False
+05-25 09:07:37 save_path: ./ckpt/new/multi_source/[JNU_0JNU_2]To[CWRU_0]_0525-090737
+05-25 09:07:37 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 09:07:38 using 1 / 2 gpus
+Loading source: JNU, Condition: 0
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |     244 |
+| 1            |     244 |
+| 2            |     244 |
+| Dataset Size |     732 |
++--------------+---------+
+Loading source: JNU, Condition: 2
+05-25 09:07:44 Source set JNU_0 number of samples 732.
+05-25 09:07:44 Source set JNU_2 number of samples 732.
+05-25 09:07:44 target training set number of samples 174.
+05-25 09:07:44 target validation set number of samples 87.
+05-25 09:07:44 -----Epoch 1/50-----
+05-25 09:07:44 current lr: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+  0%|                                                                                                                                                                      | 0/5 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "train.py", line 87, in <module>
+    trainer.train()
+  File "/home/burning_event/models/new.py", line 173, in train
+    self.l2_weight(self.C)
+  File "/home/burning_event/models/new.py", line 111, in l2_weight
+    layer.weight = nn.Parameter(F.normalize(layer.weight, p = 2, dim = 1))
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'ClassifierMLP' object has no attribute 'weight'
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |     244 |
+| 1            |     244 |
+| 2            |     244 |
+| Dataset Size |     732 |
++--------------+---------+
+Setting up target: CWRU, Condition: 0
+Target Data Distribution:
++--------------+---------+-------+
+|              |   train |   val |
+|--------------+---------+-------|
+| 0            |      58 |    29 |
+| 1            |      58 |    29 |
+| 2            |      58 |    29 |
+| Dataset Size |     174 |    87 |
++--------------+---------+-------+

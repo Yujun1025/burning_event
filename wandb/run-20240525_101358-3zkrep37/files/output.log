@@ -1,0 +1,84 @@
+05-25 10:13:59 model_name: new
+05-25 10:13:59 Domain: exp
+05-25 10:13:59 source: CWRU_0,CWRU_2
+05-25 10:13:59 target: JNU_2
+05-25 10:13:59 data_dir: ../burning_event/dataset
+05-25 10:13:59 train_mode: multi_source
+05-25 10:13:59 cuda_device: 0
+05-25 10:13:59 save_dir: ./ckpt
+05-25 10:13:59 max_epoch: 50
+05-25 10:13:59 batch_size: 32
+05-25 10:13:59 num_workers: 0
+05-25 10:13:59 signal_size: 2048
+05-25 10:13:59 random_state: 1025
+05-25 10:13:59 project: SWEEEEP
+05-25 10:13:59 fac: 0
+05-25 10:13:59 adv: 1
+05-25 10:13:59 recon: 0
+05-25 10:13:59 iet: 0
+05-25 10:13:59 normlizetype: mean-std
+05-25 10:13:59 opt: adam
+05-25 10:13:59 lr: 0.001
+05-25 10:13:59 momentum: 0.9
+05-25 10:13:59 betas: (0.9, 0.999)
+05-25 10:13:59 weight_decay: 0.001
+05-25 10:13:59 lr_scheduler: stepLR
+05-25 10:13:59 gamma: 0.2
+05-25 10:13:59 steps: 20
+05-25 10:13:59 tradeoff: ['exp', 'exp', 'exp']
+05-25 10:13:59 dropout: 0.2
+05-25 10:13:59 save: False
+05-25 10:13:59 load_path:
+05-25 10:13:59 tsne: False
+05-25 10:13:59 save_path: ./ckpt/new/multi_source/[CWRU_0CWRU_2]To[JNU_2]_0525-101359
+05-25 10:13:59 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 10:14:00 using 1 / 2 gpus
+05-25 10:14:01 Source set CWRU_0 number of samples 177.
+05-25 10:14:01 Source set CWRU_2 number of samples 177.
+Loading source: CWRU, Condition: 0
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |      59 |
+| 1            |      59 |
+| 2            |      59 |
+| Dataset Size |     177 |
++--------------+---------+
+Loading source: CWRU, Condition: 2
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |      59 |
+| 1            |      59 |
+| 2            |      59 |
+| Dataset Size |     177 |
++--------------+---------+
+Setting up target: JNU, Condition: 2
+05-25 10:14:04 target training set number of samples 729.
+05-25 10:14:04 target validation set number of samples 366.
+05-25 10:14:04 -----Epoch 1/50-----
+05-25 10:14:04 current lr: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+  0%|                                                                                                                                                                     | 0/22 [00:00<?, ?it/s]
+Target Data Distribution:
++--------------+---------+-------+
+|              |   train |   val |
+|--------------+---------+-------|
+| 0            |     243 |   122 |
+| 1            |     243 |   122 |
+| 2            |     243 |   122 |
+| Dataset Size |     729 |   366 |
+  0%|                                                                                                                                                                     | 0/22 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "train.py", line 87, in <module>
+    trainer.train()
+  File "/home/burning_event/models/new.py", line 204, in train
+    pred = self.C(f_ec)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/burning_event/./models/model_base.py", line 41, in forward
+    y = self.last_layer(y)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'ClassifierMLP' object has no attribute 'last_layer'

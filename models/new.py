@@ -82,15 +82,15 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
-        output_size = 512
+        output_size = 256
         self.d_l = load_disc().to(self.device)
-        self.d_m = model_base.extractor().to(self.device)
+        self.d_m = model_base.extractor2().to(self.device)
         self.d_m_c = model_base.ClassifierMLP(input_size=output_size, output_size=1,
                                           dropout=args.dropout, last='sigmoid').to(self.device)
-        self.e_c = model_base.extractor().to(self.device)
+        self.e_c = model_base.extractor2().to(self.device)
         self.C = model_base.ClassifierMLP(input_size=output_size, output_size=args.num_classes,
-                                          dropout=args.dropout, last='sm').to(self.device)
-        self.load_discri = model_base.ClassifierMLP(input_size=output_size, output_size=4,
+                                          dropout=args.dropout, last=None).to(self.device)
+        self.load_discri = model_base.ClassifierMLP(input_size=output_size, output_size=3,
                         dropout=args.dropout, last = 'sm').to(self.device)
         grl = utils.GradientReverseLayer() 
         self.domain_adv = utils.new_da(self.load_discri, grl=grl)
@@ -122,6 +122,13 @@ class Trainset(InitTrain):
         self.e_c.load_state_dict(ckpt['e_c'])
         self.C.load_state_dict(ckpt['C'])
 
+    def weights_init(self, m):
+        if isinstance(m, nn.Conv1d):
+            torch.nn.init.kaiming_normal(m.weight)
+    def weights_init_lin(self, m):
+        if isinstance(m, nn.Linear):
+            torch.nn.init.kaiming_normal(m.weight)
+
     def train(self):
         args = self.args
         src = args.source_name
@@ -137,7 +144,7 @@ class Trainset(InitTrain):
             # Update the learning rate
             if self.lr_scheduler is not None:
                 logging.info('current lr: {}'.format(self.lr_scheduler.get_last_lr()))
-   
+
             # Each epoch has a training and val phase
             epoch_acc = defaultdict(float)
    
@@ -148,6 +155,8 @@ class Trainset(InitTrain):
             self.e_c.train()
             self.C.train()
             self.load_discri.train()
+
+
             epoch_loss = defaultdict(float)
             tradeoff = self._get_tradeoff(args.tradeoff, epoch) 
             num_iter = len(self.dataloaders['train'])
@@ -168,36 +177,36 @@ class Trainset(InitTrain):
                         source_labels.append(source_labels_item)
                 # forward
                 self.optimizer.zero_grad()
-
-                input = torch.cat((source_data[0], source_data[1], source_data[2], target_data), axis = 0)
+                
+                input = torch.cat((source_data[0], source_data[1], target_data), axis = 0)
                 
                 # machine discriminator
                 f_dm, h_dm = self.d_m(input)
                 pred_dm = self.d_m_c(f_dm)
-                p_dm_1, p_dm_2, p_dm_3, t_p = pred_dm.chunk(4, dim = 0)
-                s_p = torch.cat((p_dm_1, p_dm_2, p_dm_3), dim = 0)
+                p_dm_1, p_dm_2, t_p = pred_dm.chunk(3, dim = 0)
+                s_p = torch.cat((p_dm_1, p_dm_2), dim = 0)
                 
                 # machine domain label
                 s_mch = torch.ones(s_p.size(0), 1).to(self.device)
                 t_mch = torch.zeros(t_p.size(0), 1).to(self.device)
                 
                 # load discriminator
-                f_dl = self.d_l(h_dm)
-                f_d1_1, f_d1_2, f_d1_3, f_d1_4 = f_dl.chunk(4, dim = 0)
+                # f_dl = self.d_l(h_dm)
+                f_dl = h_dm
+                f_d1_1, f_d1_2, f_d1_4 = f_dl.chunk(3, dim = 0)
                                
-                inputs = torch.cat((source_data[0], source_data[1], source_data[2], target_data), axis = 0)
+                inputs = torch.cat((source_data[0], source_data[1], target_data), axis = 0)
                 
                 # class classifier
                 f_ec, _ = self.e_c(inputs)
-                f_s_1, f_s_2, f_s_3, f_t = f_ec.chunk(4, dim = 0)
-                f_s = torch.cat((f_s_1, f_s_2, f_s_3), axis= 0)
+                f_s_1, f_s_2, f_t = f_ec.chunk(3, dim = 0)
+                f_s = torch.cat((f_s_1, f_s_2), axis= 0)
                 pred = self.C(f_ec)
-                pred_s1, pred_s2, pred_s3, pred_t = pred.chunk(4, dim = 0)
+                pred_s1, pred_s2, pred_t = pred.chunk(3, dim = 0)
                 
                 # source class loss
                 loss_t = F.cross_entropy(pred_s1, source_labels[0]) + \
-                         F.cross_entropy(pred_s2, source_labels[1]) + \
-                         F.cross_entropy(pred_s3, source_labels[2])
+                         F.cross_entropy(pred_s2, source_labels[1])
                 
                 # distribution align loss
                 loss_dist = self.coral(f_s, f_t)
@@ -206,17 +215,17 @@ class Trainset(InitTrain):
                 loss_dm = F.binary_cross_entropy(s_p, s_mch) + F.binary_cross_entropy(t_p, t_mch)
 
                 # factorization loss - 아직 불안정해서 사용안함
-                loss_f = torch.abs(torch.inner(f_ec, f_dm)).mean(dim = 0).mean()
+                loss_f = torch.abs(torch.triu(torch.inner(f_ec, f_dm))).mean(dim = 0).mean()
 
                 # load domain adversarial loss
-                loss_d = self.domain_adv(f_d1_1, f_d1_2, f_d1_3, f_d1_4)
+                loss_d = self.domain_adv(f_d1_1, f_d1_2, f_d1_4)
                 
                 # perserving loss - factorization loss 의 trivial soultion 을 방지
-                loss_n = torch.norm(torch.diagonal(torch.inner(f_ec, f_ec))).mean(dim = 0) + \
-                         torch.norm(torch.diagonal(torch.inner(f_dm, f_dm))).mean(dim = 0)
+                loss_n = torch.abs(torch.diagonal(torch.inner(f_ec, f_ec))).mean(dim = 0) + \
+                         torch.abs(torch.diagonal(torch.inner(f_dm, f_dm))).mean(dim = 0)
                 
-                loss = loss_t + 30 * loss_f + loss_dm + loss_d + 1000 * loss_dist
-                y_s = [pred_s1, pred_s2, pred_s3]
+                loss = 0.5 * loss_t + 0.1 * loss_f + 0.5 * loss_dm + 0.01 * loss_d + 10 * loss_dist
+                y_s = [pred_s1, pred_s2]
                 for j in range(self.num_source):
                     epoch_acc['Source Data %d'%j] += utils.get_accuracy(y_s[j], source_labels[j])
                 epoch_loss['Source Classifier'] += loss_t

@@ -19,7 +19,7 @@ class Trainset(InitTrain):
     
     def __init__(self, args):
         super(Trainset, self).__init__(args)
-        output_size = 512
+        output_size = 256
         self.model = model_base.extractor().to(self.device)
         self.C = model_base.ClassifierMLP(input_size=output_size, output_size=args.num_classes,
                                           dropout=args.dropout, last='sm').to(self.device)
@@ -72,8 +72,8 @@ class Trainset(InitTrain):
                                             self.iters, src, self.device)
                 # forward
                 self.optimizer.zero_grad()
-                f = self.model(source_data)
-                pred,_ = self.C(f)
+                f, _ = self.model(source_data)
+                pred = self.C(f)
                 loss = F.cross_entropy(pred, source_labels)
                 epoch_acc['Source Data']  += utils.get_accuracy(pred, source_labels)
                 

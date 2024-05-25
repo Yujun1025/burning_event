@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "train.py", line 67, in <module>
+    assert len(args.source_name) > 1, "source_combine and multi_source mode need more than one source"
+AssertionError: source_combine and multi_source mode need more than one source

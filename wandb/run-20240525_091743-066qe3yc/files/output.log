@@ -1,0 +1,88 @@
+05-25 09:17:43 model_name: new
+05-25 09:17:43 Domain: exp
+05-25 09:17:43 source: CWRU_0,CWRU_2
+05-25 09:17:43 target: JNU_2
+05-25 09:17:43 data_dir: ../burning_event/dataset
+05-25 09:17:43 train_mode: multi_source
+05-25 09:17:43 cuda_device: 0
+05-25 09:17:43 save_dir: ./ckpt
+05-25 09:17:43 max_epoch: 50
+05-25 09:17:43 batch_size: 32
+05-25 09:17:43 num_workers: 0
+05-25 09:17:43 signal_size: 2048
+05-25 09:17:43 random_state: 5
+05-25 09:17:43 project: SWEEEEP
+05-25 09:17:43 fac: 0
+05-25 09:17:43 adv: 1
+05-25 09:17:43 recon: 0
+05-25 09:17:43 iet: 0
+05-25 09:17:43 normlizetype: mean-std
+05-25 09:17:43 opt: adam
+05-25 09:17:43 lr: 0.001
+05-25 09:17:43 momentum: 0.9
+05-25 09:17:43 betas: (0.9, 0.999)
+05-25 09:17:43 weight_decay: 0.001
+05-25 09:17:43 lr_scheduler: stepLR
+05-25 09:17:43 gamma: 0.2
+05-25 09:17:43 steps: 20
+05-25 09:17:43 tradeoff: ['exp', 'exp', 'exp']
+05-25 09:17:43 dropout: 0.2
+05-25 09:17:43 save: False
+05-25 09:17:43 load_path:
+05-25 09:17:43 tsne: False
+05-25 09:17:43 save_path: ./ckpt/new/multi_source/[CWRU_0CWRU_2]To[JNU_2]_0525-091743
+05-25 09:17:43 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 09:17:44 using 1 / 2 gpus
+Loading source: CWRU, Condition: 0
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |      59 |
+| 1            |      59 |
+| 2            |      59 |
+| Dataset Size |     177 |
++--------------+---------+
+Loading source: CWRU, Condition: 2
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |      59 |
+| 1            |      59 |
+| 2            |      59 |
+| Dataset Size |     177 |
++--------------+---------+
+Setting up target: JNU, Condition: 2
+05-25 09:17:46 Source set CWRU_0 number of samples 177.
+05-25 09:17:46 Source set CWRU_2 number of samples 177.
+Target Data Distribution:
++--------------+---------+-------+
+|              |   train |   val |
+|--------------+---------+-------|
+| 0            |     243 |   122 |
+| 1            |     243 |   122 |
+| 2            |     243 |   122 |
+| Dataset Size |     729 |   366 |
++--------------+---------+-------+
+05-25 09:17:48 target training set number of samples 729.
+05-25 09:17:48 target validation set number of samples 366.
+05-25 09:17:48 -----Epoch 1/50-----
+05-25 09:17:48 current lr: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+  0%|                                                                                                                                                                     | 0/22 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "train.py", line 87, in <module>
+    trainer.train()
+  File "/home/burning_event/models/new.py", line 185, in train
+    f_dl = self.d_l(h_dm)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/burning_event/models/new.py", line 62, in forward
+    out = self.conv_1(tar)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/conv.py", line 302, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/conv.py", line 298, in _conv_forward
+    return F.conv1d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [64, 64, 3], expected input[1, 96, 256] to have 64 channels, but got 96 channels instead

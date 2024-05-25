@@ -1,0 +1,1 @@
+{"Train-Acc Source Data": 0.9375, "_timestamp": 1716625299.6583507, "Train-Acc Discriminator": 70.0, "last_target_acc": 0.513, "_runtime": 11.010860681533813, "_step": 100, "best_target_acc": 0.719, "target_acc": 0.513, "_wandb": {"runtime": 10}}

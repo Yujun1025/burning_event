@@ -1,0 +1,130 @@
+wandb_version: 1
+
+model_name:
+  desc: null
+  value: new
+Domain:
+  desc: null
+  value: exp
+source:
+  desc: null
+  value: CWRU_0,CWRU_2
+target:
+  desc: null
+  value: JNU_0
+data_dir:
+  desc: null
+  value: ../burning_event/dataset
+train_mode:
+  desc: null
+  value: multi_source
+cuda_device:
+  desc: null
+  value: '0'
+save_dir:
+  desc: null
+  value: ./ckpt
+max_epoch:
+  desc: null
+  value: 50
+batch_size:
+  desc: null
+  value: 32
+num_workers:
+  desc: null
+  value: 0
+signal_size:
+  desc: null
+  value: 2048
+random_state:
+  desc: null
+  value: 5
+project:
+  desc: null
+  value: SWEEEEP
+fac:
+  desc: null
+  value: 0
+adv:
+  desc: null
+  value: 1
+recon:
+  desc: null
+  value: 0
+iet:
+  desc: null
+  value: 0
+normlizetype:
+  desc: null
+  value: mean-std
+opt:
+  desc: null
+  value: adam
+lr:
+  desc: null
+  value: 0.001
+momentum:
+  desc: null
+  value: 0.9
+betas:
+  desc: null
+  value:
+  - 0.9
+  - 0.999
+weight_decay:
+  desc: null
+  value: 0.001
+lr_scheduler:
+  desc: null
+  value: stepLR
+gamma:
+  desc: null
+  value: 0.2
+steps:
+  desc: null
+  value: '20'
+tradeoff:
+  desc: null
+  value:
+  - exp
+  - exp
+  - exp
+dropout:
+  desc: null
+  value: 0.2
+save:
+  desc: null
+  value: false
+load_path:
+  desc: null
+  value: ''
+tsne:
+  desc: null
+  value: false
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.10
+    cli_version: 0.17.0
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1716625096
+    t:
+      1:
+      - 1
+      - 55
+      2:
+      - 1
+      - 5
+      - 53
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      4: 3.8.10
+      5: 0.17.0
+      8:
+      - 5
+      13: linux-x86_64

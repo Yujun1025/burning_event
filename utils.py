@@ -292,22 +292,22 @@ class new_da(nn.Module):
         self.bce = lambda input, target, weight: \
             F.binary_cross_entropy(input, target, weight=weight, reduction=reduction)
 
-    def forward(self, f_s1, f_s2, f_s3, f_t, w_s = None, w_t = None):
-        f = self.grl(torch.cat((f_s1, f_s2, f_s3, f_t), dim=0))
+    def forward(self, f_s1, f_s2, f_t, w_s = None, w_t = None):
+        f = self.grl(torch.cat((f_s1, f_s2, f_t), dim=0))
         d = self.domain_discriminator(f)
-        d_s1, d_s2, d_s3, d_t = d.chunk(4, dim=0)
+        d_s1, d_s2, d_t = d.chunk(3, dim=0)
 
 
         d_label_1 = torch.zeros((f_s1.size(0),), dtype=torch.long).to(f_s1.device)
 
         d_label_2 = torch.ones((f_s2.size(0),), dtype=torch.long).to(f_s1.device)
         
-        d_label_3 = torch.full((f_s3.size(0),), 2, dtype=torch.long).to(f_s1.device)
+        d_label_3 = torch.full((f_t.size(0),), 2, dtype=torch.long).to(f_s1.device)
         
-        d_label_4 = torch.full((f_t.size(0),), 3, dtype=torch.long).to(f_t.device)
+        # d_label_4 = torch.full((f_t.size(0),), 3, dtype=torch.long).to(f_t.device)
 
         loss = F.cross_entropy(d_s1, d_label_1) + F.cross_entropy(d_s2, d_label_2) + \
-                F.cross_entropy(d_s3, d_label_3) + F.cross_entropy(d_t, d_label_4)
+                F.cross_entropy(d_t, d_label_3) 
         return loss
 
 

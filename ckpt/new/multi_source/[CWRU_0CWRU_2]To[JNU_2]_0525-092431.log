@@ -1,0 +1,41 @@
+05-25 09:24:31 model_name: new
+05-25 09:24:31 Domain: exp
+05-25 09:24:31 source: CWRU_0,CWRU_2
+05-25 09:24:31 target: JNU_2
+05-25 09:24:31 data_dir: ../burning_event/dataset
+05-25 09:24:31 train_mode: multi_source
+05-25 09:24:31 cuda_device: 0
+05-25 09:24:31 save_dir: ./ckpt
+05-25 09:24:31 max_epoch: 50
+05-25 09:24:31 batch_size: 32
+05-25 09:24:31 num_workers: 0
+05-25 09:24:31 signal_size: 2048
+05-25 09:24:31 random_state: 5
+05-25 09:24:31 project: SWEEEEP
+05-25 09:24:31 fac: 0
+05-25 09:24:31 adv: 1
+05-25 09:24:31 recon: 0
+05-25 09:24:31 iet: 0
+05-25 09:24:31 normlizetype: mean-std
+05-25 09:24:31 opt: adam
+05-25 09:24:31 lr: 0.001
+05-25 09:24:31 momentum: 0.9
+05-25 09:24:31 betas: (0.9, 0.999)
+05-25 09:24:31 weight_decay: 0.001
+05-25 09:24:31 lr_scheduler: stepLR
+05-25 09:24:31 gamma: 0.2
+05-25 09:24:31 steps: 20
+05-25 09:24:31 tradeoff: ['exp', 'exp', 'exp']
+05-25 09:24:31 dropout: 0.2
+05-25 09:24:31 save: False
+05-25 09:24:31 load_path: 
+05-25 09:24:31 tsne: False
+05-25 09:24:31 save_path: ./ckpt/new/multi_source/[CWRU_0CWRU_2]To[JNU_2]_0525-092431
+05-25 09:24:31 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 09:24:32 using 1 / 2 gpus
+05-25 09:24:33 Source set CWRU_0 number of samples 177.
+05-25 09:24:33 Source set CWRU_2 number of samples 177.
+05-25 09:24:35 target training set number of samples 729.
+05-25 09:24:35 target validation set number of samples 366.
+05-25 09:24:35 -----Epoch 1/50-----
+05-25 09:24:35 current lr: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]

@@ -1,0 +1,43 @@
+05-25 08:16:16 model_name: DANN
+05-25 08:16:16 Domain: exp
+05-25 08:16:16 source: CWRU_0,CWRU_2
+05-25 08:16:16 target: JNU_2
+05-25 08:16:16 data_dir: ../burning_event/dataset
+05-25 08:16:16 train_mode: source_combine
+05-25 08:16:16 cuda_device: 0
+05-25 08:16:16 save_dir: ./ckpt
+05-25 08:16:16 max_epoch: 50
+05-25 08:16:16 batch_size: 32
+05-25 08:16:16 num_workers: 0
+05-25 08:16:16 signal_size: 2048
+05-25 08:16:16 random_state: 1025
+05-25 08:16:16 project: experiment
+05-25 08:16:16 fac: 0
+05-25 08:16:16 adv: 1
+05-25 08:16:16 recon: 0
+05-25 08:16:16 iet: 0
+05-25 08:16:16 normlizetype: mean-std
+05-25 08:16:16 opt: adam
+05-25 08:16:16 lr: 0.001
+05-25 08:16:16 momentum: 0.9
+05-25 08:16:16 betas: (0.9, 0.999)
+05-25 08:16:16 weight_decay: 0.001
+05-25 08:16:16 lr_scheduler: stepLR
+05-25 08:16:16 gamma: 0.2
+05-25 08:16:16 steps: 20
+05-25 08:16:16 tradeoff: ['exp', 'exp', 'exp']
+05-25 08:16:16 dropout: 0.2
+05-25 08:16:16 save: False
+05-25 08:16:16 load_path:
+05-25 08:16:16 tsne: False
+05-25 08:16:16 save_path: ./ckpt/DANN/source_combine/[CWRU_0CWRU_2]To[JNU_2]_0525-081616
+05-25 08:16:16 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 08:16:17 using 1 / 2 gpus
+Traceback (most recent call last):
+  File "train.py", line 81, in <module>
+    trainer = importlib.import_module(f"models.{args.model_name}").Trainset(args)
+  File "/home/burning_event/models/DANN.py", line 71, in __init__
+    self.model = model_base.BaseModel(input_size=1, num_classes=args.num_classes,
+  File "/home/burning_event/./models/model_base.py", line 133, in __init__
+    self.G = extractor(in_channel=input_size)
+TypeError: __init__() got an unexpected keyword argument 'in_channel'

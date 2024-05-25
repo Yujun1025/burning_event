@@ -5,16 +5,16 @@ def parse_args():
  
 
     # basic parameters
-    parser.add_argument('--model_name', type=str, default='CNN',
+    parser.add_argument('--model_name', type=str, default='new',
                         help='Name of the model (in ./models directory)')
     parser.add_argument('--Domain', type=str, default='exp')
     parser.add_argument('--source', type=str, default='CWRU_0,CWRU_2', #
                         help='Source data, separated by "," (select specific conditions of the dataset with name_number, such as HUST_0)')
-    parser.add_argument('--target', type=str, default='JNU_1',
+    parser.add_argument('--target', type=str, default='JNU_2',
                         help='Target data (select specific conditions of the dataset with name_number, such as CWRU_0)')
-    parser.add_argument('--data_dir', type=str, default="/home/workspace/burning_event/dataset",
+    parser.add_argument('--data_dir', type=str, default="../burning_event/dataset",
                         help='Directory of the datasets')
-    parser.add_argument('--train_mode', type=str, default='source_combine',
+    parser.add_argument('--train_mode', type=str, default='multi_source',
                         choices=['single_source', 'source_combine', 'multi_source'],
                         help='Training mode (select correctly before training)')
     parser.add_argument('--cuda_device', type=str, default='0',

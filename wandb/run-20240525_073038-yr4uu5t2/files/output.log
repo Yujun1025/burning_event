@@ -1,0 +1,37 @@
+05-25 07:30:38 model_name: CNN
+05-25 07:30:38 Domain: exp
+05-25 07:30:38 source: CWRU_0,CWRU_2
+05-25 07:30:38 target: JNU_1
+05-25 07:30:38 data_dir: /home/workspace/burning_event/dataset
+05-25 07:30:38 train_mode: source_combine
+05-25 07:30:38 cuda_device: 0
+05-25 07:30:38 save_dir: ./ckpt
+05-25 07:30:38 max_epoch: 50
+05-25 07:30:38 batch_size: 32
+05-25 07:30:38 num_workers: 0
+05-25 07:30:38 signal_size: 2048
+05-25 07:30:38 random_state: 5
+05-25 07:30:38 project: SWEEEEP
+05-25 07:30:38 fac: 0
+05-25 07:30:38 adv: 1
+05-25 07:30:38 recon: 0
+05-25 07:30:38 iet: 0
+05-25 07:30:38 normlizetype: mean-std
+05-25 07:30:38 opt: adam
+05-25 07:30:38 lr: 0.001
+05-25 07:30:38 momentum: 0.9
+05-25 07:30:38 betas: (0.9, 0.999)
+05-25 07:30:38 weight_decay: 0.001
+05-25 07:30:38 lr_scheduler: stepLR
+05-25 07:30:38 gamma: 0.2
+05-25 07:30:38 steps: 20
+05-25 07:30:38 tradeoff: ['exp', 'exp', 'exp']
+05-25 07:30:38 dropout: 0.2
+05-25 07:30:38 save: False
+05-25 07:30:38 load_path:
+05-25 07:30:38 tsne: False
+05-25 07:30:38 save_path: ./ckpt/CNN/source_combine/[CWRU_0CWRU_2]To[JNU_1]_0525-073038
+Traceback (most recent call last):
+  File "train.py", line 74, in <module>
+    args.faults = sorted(os.listdir(os.path.join(data_root, 'condition_%d' % condition)))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/workspace/burning_event/dataset/JNU/condition_1'

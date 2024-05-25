@@ -1,0 +1,75 @@
+05-25 09:32:14 model_name: CNN
+05-25 09:32:14 Domain: exp
+05-25 09:32:14 source: CWRU_0,CWRU_2
+05-25 09:32:14 target: JNU_2
+05-25 09:32:14 data_dir: ../burning_event/dataset
+05-25 09:32:14 train_mode: multi_source
+05-25 09:32:14 cuda_device: 0
+05-25 09:32:14 save_dir: ./ckpt
+05-25 09:32:14 max_epoch: 50
+05-25 09:32:14 batch_size: 32
+05-25 09:32:14 num_workers: 0
+05-25 09:32:14 signal_size: 2048
+05-25 09:32:14 random_state: 5
+05-25 09:32:14 project: SWEEEEP
+05-25 09:32:14 fac: 0
+05-25 09:32:14 adv: 1
+05-25 09:32:14 recon: 0
+05-25 09:32:14 iet: 0
+05-25 09:32:14 normlizetype: mean-std
+05-25 09:32:14 opt: adam
+05-25 09:32:14 lr: 0.001
+05-25 09:32:14 momentum: 0.9
+05-25 09:32:14 betas: (0.9, 0.999)
+05-25 09:32:14 weight_decay: 0.001
+05-25 09:32:14 lr_scheduler: stepLR
+05-25 09:32:14 gamma: 0.2
+05-25 09:32:14 steps: 20
+05-25 09:32:14 tradeoff: ['exp', 'exp', 'exp']
+05-25 09:32:14 dropout: 0.2
+05-25 09:32:14 save: False
+05-25 09:32:14 load_path:
+05-25 09:32:14 tsne: False
+05-25 09:32:14 save_path: ./ckpt/CNN/multi_source/[CWRU_0CWRU_2]To[JNU_2]_0525-093214
+05-25 09:32:14 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 09:32:15 using 1 / 2 gpus
+Loading source: CWRU, Condition: 0
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |      59 |
+| 1            |      59 |
+| 2            |      59 |
+| Dataset Size |     177 |
++--------------+---------+
+Loading source: CWRU, Condition: 2
+Source Data Distribution:
++--------------+---------+
+| Label        |   Count |
+|--------------+---------|
+| 0            |      59 |
+| 1            |      59 |
+| 2            |      59 |
+| Dataset Size |     177 |
++--------------+---------+
+Setting up target: JNU, Condition: 2
+05-25 09:32:16 Source set CWRU_0 number of samples 177.
+05-25 09:32:16 Source set CWRU_2 number of samples 177.
+Target Data Distribution:
++--------------+---------+-------+
+|              |   train |   val |
+|--------------+---------+-------|
+| 0            |     243 |   122 |
+| 1            |     243 |   122 |
+| 2            |     243 |   122 |
+| Dataset Size |     729 |   366 |
++--------------+---------+-------+
+05-25 09:32:18 target training set number of samples 729.
+05-25 09:32:18 target validation set number of samples 366.
+Traceback (most recent call last):
+  File "train.py", line 87, in <module>
+    trainer.train()
+  File "/home/burning_event/models/CNN.py", line 47, in train
+    raise Exception("This model cannot be trained in multi_source mode.")
+Exception: This model cannot be trained in multi_source mode.

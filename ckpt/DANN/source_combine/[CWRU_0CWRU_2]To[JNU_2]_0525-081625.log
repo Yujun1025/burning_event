@@ -1,0 +1,35 @@
+05-25 08:16:25 model_name: DANN
+05-25 08:16:25 Domain: exp
+05-25 08:16:25 source: CWRU_0,CWRU_2
+05-25 08:16:25 target: JNU_2
+05-25 08:16:25 data_dir: ../burning_event/dataset
+05-25 08:16:25 train_mode: source_combine
+05-25 08:16:25 cuda_device: 0
+05-25 08:16:25 save_dir: ./ckpt
+05-25 08:16:25 max_epoch: 50
+05-25 08:16:25 batch_size: 32
+05-25 08:16:25 num_workers: 0
+05-25 08:16:25 signal_size: 2048
+05-25 08:16:25 random_state: 2109
+05-25 08:16:25 project: experiment
+05-25 08:16:25 fac: 0
+05-25 08:16:25 adv: 1
+05-25 08:16:25 recon: 0
+05-25 08:16:25 iet: 0
+05-25 08:16:25 normlizetype: mean-std
+05-25 08:16:25 opt: adam
+05-25 08:16:25 lr: 0.001
+05-25 08:16:25 momentum: 0.9
+05-25 08:16:25 betas: (0.9, 0.999)
+05-25 08:16:25 weight_decay: 0.001
+05-25 08:16:25 lr_scheduler: stepLR
+05-25 08:16:25 gamma: 0.2
+05-25 08:16:25 steps: 20
+05-25 08:16:25 tradeoff: ['exp', 'exp', 'exp']
+05-25 08:16:25 dropout: 0.2
+05-25 08:16:25 save: False
+05-25 08:16:25 load_path: 
+05-25 08:16:25 tsne: False
+05-25 08:16:25 save_path: ./ckpt/DANN/source_combine/[CWRU_0CWRU_2]To[JNU_2]_0525-081625
+05-25 08:16:25 Detect 3 classes: ['inner', 'normal', 'outer']
+05-25 08:16:26 using 1 / 2 gpus
